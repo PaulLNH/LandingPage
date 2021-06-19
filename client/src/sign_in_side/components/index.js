@@ -6,9 +6,10 @@ import Link from "@material-ui/core/Link";
 import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
+import { Typography, Divider } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import logo from "../assets/images/colosseum.jpg";
+import logo from "../assets/images/logo.png";
+import sideImage from "../assets/images/colosseum2.jpg";
 import "./index.css";
 import axios from "axios";
 
@@ -32,13 +33,19 @@ const useStyles = makeStyles((theme) => ({
     height: "100vh",
   },
   image: {
-    backgroundRepeat: "no-repeat",
-    backgroundColor:
-      theme.palette.type === "light"
-        ? theme.palette.grey[50]
-        : theme.palette.grey[900],
-    backgroundSize: "cover",
-    backgroundPosition: "center",
+    width: "auto",
+    height: "100vh",
+    // backgroundRepeat: "no-repeat",
+    // backgroundColor:
+    //   theme.palette.type === "light"
+    //     ? theme.palette.grey[50]
+    //     : theme.palette.grey[900],
+    // backgroundSize: "cover",
+    // backgroundPosition: "center",
+  },
+  logo: {
+    width: "25vw",
+    height: "auto",
   },
   paper: {
     margin: theme.spacing(8, 4),
@@ -57,8 +64,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignInSide() {
-  const [date, setDate] = React.useState("");
-  const [email, setEmail] = React.useState("");
+  const [date, setDate] = useState("");
+  const [email, setEmail] = useState("");
   const classes = useStyles();
 
   useEffect(() => {
@@ -80,24 +87,37 @@ export default function SignInSide() {
     console.log(`Submitting email: ${email}`);
     axios
       .post(gaipurl, { Date: date, Email: email })
-      .then((response) => console.log(response))
+      .then((response) => {
+        // TODO: Clear form and let user know email has been added successfully
+        console.log(response);
+      })
       .catch((err) => console.error(err));
   };
 
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} className={classes.image}>
-        <img src={logo} className="Side-logo" alt="logo" />
+      <Grid item xs={false} sm={4} md={7}>
+        {/* TODO: Fix scroll bar and mobile screen */}
+        <img
+          src={sideImage}
+          className="Side-logo"
+          alt="logo"
+          className={classes.image}
+        />
       </Grid>
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
-          <Typography component="h1" variant="h2">
-            Gladiator's Vigor
-          </Typography>
-          <Typography component="h1" variant="h5">
+          <img src={logo} alt="Gladiator's Vigor" className={classes.logo} />
+          {logo ? null : (
+            <Typography component="h1" variant="h2">
+              Gladiator's Vigor
+            </Typography>
+          )}
+          <Typography component="h1" variant="h5" fontWeight="fontWeightBold">
             Confidence, Physique, Purpose.
           </Typography>
+          <Divider />
           <Typography component="h6" variant="h6">
             This is some test text about the product and why you should sign up
             for the waitlist! Get notified when this product is avaiable.
