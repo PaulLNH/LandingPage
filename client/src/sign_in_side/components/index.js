@@ -19,7 +19,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link color="inherit" href="https://gladiatorsvigor.com/">
         Gladiator's Vigor
       </Link>{" "}
       {new Date().getFullYear()}
@@ -35,13 +35,13 @@ const useStyles = makeStyles((theme) => ({
   image: {
     width: "auto",
     height: "100vh",
-    // backgroundRepeat: "no-repeat",
-    // backgroundColor:
-    //   theme.palette.type === "light"
-    //     ? theme.palette.grey[50]
-    //     : theme.palette.grey[900],
-    // backgroundSize: "cover",
-    // backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundColor:
+      theme.palette.type === "light"
+        ? theme.palette.grey[50]
+        : theme.palette.grey[900],
+    backgroundSize: "cover",
+    backgroundPosition: "center",
   },
   logo: {
     width: "25vw",
@@ -97,7 +97,7 @@ export default function SignInSide() {
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
-      <Grid item xs={false} sm={4} md={7}>
+      <Grid item xs={0} sm={4} md={7} className={classes.image}>
         {/* TODO: Fix scroll bar and mobile screen */}
         <img
           src={sideImage}
@@ -108,20 +108,36 @@ export default function SignInSide() {
       </Grid>
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
-          <img src={logo} alt="Gladiator's Vigor" className={classes.logo} />
+          <img src={logo} alt="Gladiator's Vigor" className="logo" />
           {logo ? null : (
             <Typography component="h1" variant="h2">
               Gladiator's Vigor
             </Typography>
           )}
-          <Typography component="h1" variant="h5" fontWeight="fontWeightBold">
-            Confidence, Physique, Purpose.
-          </Typography>
+          {/* <Typography component="h1" variant="h5" fontWeight="fontWeightBold">
+            Get fit. Compete in the Arena. Become a Legend.
+          </Typography> */}
           <Divider />
           <Typography component="h6" variant="h6">
-            This is some test text about the product and why you should sign up
-            for the waitlist! Get notified when this product is avaiable.
+            The gate opens, you stumble onto the sand. Your opponent blocks out
+            the sun, making your way to your feet the Lanista yells "BEGIN!".
           </Typography>
+          <p>
+            Gladiator's Vigor is an immersive fitness game where you are the
+            character. You must complete regular training set forth by the
+            Lanista (trainer of gladiators) in preperation to compete in
+            gladitorial games where you will be representing your Ludis
+            (Gladiator School).
+          </p>
+          <p>
+            The gladiatorial games are cumulative milestones of your training
+            where you are matched against opponents of similiar skill and
+            ability to compete for individual fame and the glory of your Ludis.
+          </p>
+          <p class="italic">
+            Gladiator's Vigor is in early alpha, add your email to the list by
+            entering it below and we will beckon you when the Colosseum opens.
+          </p>
           <form className={classes.form} noValidate>
             <TextField
               variant="outlined"
@@ -142,7 +158,7 @@ export default function SignInSide() {
               className={classes.submit}
               onClick={handleSubmit}
             >
-              Add Me to the Wait List!
+              I want to be a gladiator!
             </Button>
             <Box mt={5}>
               <Copyright />

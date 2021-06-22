@@ -3,3 +3,23 @@
   width: 100%;
   pointer-events: none;
 }
+
+.logo {
+  max-width: "75%";
+  height: "auto";
+}
+
+p.italic {
+  font-style: italic;
+}
+
+@media (orientation: portrait) {
+  .bgimage {
+    display: none; /* visibility: none; */
+  }
+}
+@media (orientation: landscape) and (max-width: 767px) {
+  .bgimage {
+    display: none; /* visibility: none; */
+  }
+}
